@@ -1,4 +1,4 @@
-# Copyright (c) 2023 - JakeFrosty#0
+# Copyright (c) 2023 - jakefrosty
 # Licensed under GPL-3.0
 
 import json

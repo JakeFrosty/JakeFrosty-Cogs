@@ -6,7 +6,7 @@ If and when that happens you can always create an issue in my repo and I'll try 
 ### Bug report
 This is a simple format you can follow
 
-## [Title]
+#### [Title]
 
 - Brief Description of bug/s
 1. Try to be detailed with the bug report, try to tell in detail what and why you think it may have happened, also what you did before it happened.

@@ -1,11 +1,11 @@
 {
     "name": "modnotes",
-    "short": "Log/Make notes about users",
+    "short": "A rework of the ModNotes cog by Jojo#7790",
     "description": "Allow moderators to make notes about users",
     "end_user_data_statement": "This cog stores \"notes\" on users via ids.",
     "install_msg": "Thank you for installing ModNotes.\nThis cog allows moderators to add notes to users to keep track of things.",
     "author": [
-        "Jojo#7791"
+        "jakefrosty", "psychotechv4", "jojo7791"
     ],
     "required_cogs": {},
     "requirements": [],

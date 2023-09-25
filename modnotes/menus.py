@@ -1,4 +1,4 @@
-# Copyright (c) 2023 - jakefrosty#0
+# Copyright (c) 2023 - jakefrosty
 # Licensed under MIT
 
 from __future__ import annotations
