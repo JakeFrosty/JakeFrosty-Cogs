@@ -1,5 +1,5 @@
-# Copyright (c) 2023 - jakefrosty
-# Licensed under GPL-3.0
+# Copyright (c) 2021 - Jojo#7791
+# Licensed under MIT
 
 import logging
 from typing import Any, Dict, Final, List
@@ -14,7 +14,7 @@ from .api import NotAuthor, NoteApi, modlog_exists
 from .menus import Menu, Page
 from .utils import *
 
-log = logging.getLogger("red.JojoCogs.advanced_log")
+log = logging.getLogger("red.JakeFrostyCogs.Mod_Notes")
 _config_structure: Dict[str, Dict[str, Any]] = {
     "guild": {
         "modlog_enabled": False,
@@ -29,12 +29,12 @@ _config_structure: Dict[str, Dict[str, Any]] = {
 class ModNotes(commands.Cog):
     """A mod note cog for moderators to add notes to users"""
 
-    __authors__: Final[List[str]] = ["Jojo#7791"]
+    __authors__: Final[List[str]] = ["jakefrosty,psychotechv4,jojo7791"]
     __version__: Final[str] = "1.0.1"
 
     def __init__(self, bot: Red):
         self.bot = bot
-        self.config = Config.get_conf(None, 544974305445019651, True, cog_name="AdvancedLog")
+        self.config = Config.get_conf(None, 415779962436452353, True, cog_name="ModNotes")
         self.config.register_guild(**_config_structure["guild"])
         self.config.register_member(**_config_structure["member"])
         self.config.register_global(updated=False)

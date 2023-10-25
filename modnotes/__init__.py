@@ -1,5 +1,5 @@
-# Copyright (c) 2023 - jakefrosty
-# Licensed under GPL-3.0
+# Copyright (c) 2021 - Jojo#7791
+# Licensed under MIT
 
 import json
 from pathlib import Path

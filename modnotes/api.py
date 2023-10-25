@@ -1,5 +1,5 @@
-# Copyright (c) 2023 - jakefrosty
-# Licensed under GPL-3.0
+# Copyright (c) 2021 - Jojo#7791
+# Licensed under MIT
 
 import logging
 from datetime import datetime, timezone
@@ -9,7 +9,7 @@ import discord  # type:ignore
 from redbot.core import Config, commands, modlog
 from redbot.core.bot import Red
 
-log = logging.getLogger("red.JojoCogs.advanced_log.api")
+log = logging.getLogger("red.JakeFrostyCogs.Mod_Notes.api")
 
 
 class ApiError(Exception):
