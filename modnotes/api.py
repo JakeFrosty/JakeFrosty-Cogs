@@ -1,4 +1,5 @@
-# Copyright (c) 2021 - Jojo#7791
+# Copyright (c) 2021 - jojo7791
+# Modified (c) 2023 - jakefrosty, psychotechv4
 # Licensed under MIT
 
 import logging
@@ -9,7 +10,7 @@ import discord  # type:ignore
 from redbot.core import Config, commands, modlog
 from redbot.core.bot import Red
 
-log = logging.getLogger("red.JakeFrostyCogs.Mod_Notes.api")
+log = logging.getLogger("red.JakeFrostyCogs.ModNot3s.api")
 
 
 class ApiError(Exception):

@@ -1,4 +1,5 @@
-# Copyright (c) 2021 - Jojo#7791
+# Copyright (c) 2021 - jojo7791
+# Modified (c) 2023 - jakefrosty, psychotechv4
 # Licensed under MIT
 
 import logging
@@ -14,7 +15,7 @@ from .api import NotAuthor, NoteApi, modlog_exists
 from .menus import Menu, Page
 from .utils import *
 
-log = logging.getLogger("red.JakeFrostyCogs.Mod_Notes")
+log = logging.getLogger("red.JakeFrostyCogs.ModNot3s")
 _config_structure: Dict[str, Dict[str, Any]] = {
     "guild": {
         "modlog_enabled": False,
@@ -26,15 +27,15 @@ _config_structure: Dict[str, Dict[str, Any]] = {
 }
 
 
-class ModNotes(commands.Cog):
+class ModNot3s(commands.Cog):
     """A mod note cog for moderators to add notes to users"""
 
     __authors__: Final[List[str]] = ["jakefrosty,psychotechv4,jojo7791"]
-    __version__: Final[str] = "1.0.1"
+    __version__: Final[str] = "1.0.2"
 
     def __init__(self, bot: Red):
         self.bot = bot
-        self.config = Config.get_conf(None, 415779962436452353, True, cog_name="ModNotes")
+        self.config = Config.get_conf(None, 415779962436452353, True, cog_name="ModNot3s")
         self.config.register_guild(**_config_structure["guild"])
         self.config.register_member(**_config_structure["member"])
         self.config.register_global(updated=False)
@@ -70,11 +71,11 @@ class ModNotes(commands.Cog):
 
     @commands.group()
     @commands.admin_or_permissions(administrator=True)
-    async def modnoteset(self, ctx: commands.Context):
+    async def noteset(self, ctx: commands.Context):
         """Setup modnotes"""
         pass
 
-    @modnoteset.command()
+    @noteset.command()
     async def usemodlog(self, ctx: commands.Context, toggle: bool):
         """Toggle whether to use the modlog or not.
 
@@ -94,7 +95,7 @@ class ModNotes(commands.Cog):
         await ctx.send(f"Modlog logging is now {disabled}.")
         await self.config.guild(ctx.guild).modlog_enabled.set(toggle)
 
-    @modnoteset.command(name="nonauthoredits", aliases=("nae",))
+    @noteset.command(name="nonauthoredits", aliases=("nae",))
     async def non_author_edits(self, ctx: commands.Context, toggle: bool):
         """Allow any moderator to edit notes, regardless of who authored it
         
@@ -110,10 +111,11 @@ class ModNotes(commands.Cog):
         now_no_longer = "now" if toggle else "no longer"
         await ctx.send(f"Moderators can {now_no_longer} edit notes not authored by them.")
 
-    @commands.group(aliases=("mnote",), invoke_without_command=True)
+#    @commands.group(aliases=("mnote",), invoke_without_command=True)
+    @commands.group(invoke_without_command=True)
     @commands.guild_only()
     @commands.mod_or_permissions(administrator=True)
-    async def modnote(
+    async def note(
         self, ctx: commands.Context, user: NonBotMember(False), *, note: str  # type:ignore
     ):
         """Create a note for a user. This user cannot be a bot.
@@ -128,8 +130,8 @@ class ModNotes(commands.Cog):
         await ctx.send(f"Done. I have added that as a note for {user.name}.")
         await self.api.create_note(ctx.guild, user, ctx.author, note)
 
-    @modnote.command(name="listall")
-    async def modnote_list_all(self, ctx: commands.Context):
+    @note.command(name="listall")
+    async def note_list_all(self, ctx: commands.Context):
         """List all the members with notes in this guild"""
         data = await self.config.all_members(ctx.guild)
         if not data:
@@ -173,7 +175,7 @@ class ModNotes(commands.Cog):
         title = f"Notes in {ctx.guild} ({ctx.guild.id})."
         await Menu(ctx, Page(act, title, use_md=False)).start()
 
-    @modnote.command()
+    @note.command()
     async def remove(self, ctx: commands.Context, user: NonBotMember, index: PositiveInt):
         """Remove a note from a user. This user cannot be a bot.
 
@@ -190,7 +192,7 @@ class ModNotes(commands.Cog):
         else:
             await ctx.send(f"Removed a note from that user at index {index}.")
             
-    @modnote.command(name="clearnotes")
+    @note.command(name="clearnotes")
     @commands.guild_only()
     @commands.mod_or_permissions(administrator=True)
     async def clear_notes(self, ctx: commands.Context, user: NonBotMember):
@@ -208,7 +210,7 @@ class ModNotes(commands.Cog):
         else:
             await ctx.send(f"Cleared all notes from that user.")
 
-    @modnote.command()
+    @note.command()
     async def edit(
         self, ctx: commands.Context, user: NonBotMember, index: PositiveInt, *, note: str
     ):
@@ -230,8 +232,8 @@ class ModNotes(commands.Cog):
                 f"Edited the note at index {index}."
             )  # TODO(Jojo) Maybe send the new + old note?
 
-    @modnote.command(name="list")
-    async def modnote_list(self, ctx: commands.Context, user: NonBotMember):
+    @note.command(name="list")
+    async def note_list(self, ctx: commands.Context, user: NonBotMember):
         """List the notes on a certain user.
 
         This user cannot be a bot.
