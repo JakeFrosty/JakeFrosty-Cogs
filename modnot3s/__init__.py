@@ -15,3 +15,6 @@ with open(Path(__file__).parent / "info.json") as fp:
 
 async def setup(bot: Red):
     await bot.add_cog(ModNot3s(bot))
+
+async def teardown(bot: Red):
+    await bot.remove_cog(ModNot3s(bot))
